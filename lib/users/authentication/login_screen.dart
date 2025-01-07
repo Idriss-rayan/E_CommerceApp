@@ -34,6 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       "images/login.jpg",
                     ),
                   ),
+
                   //login screen sign-in form
                   Padding(
                     padding: const EdgeInsets.all(16.0),
@@ -52,20 +53,19 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(30 , 30 , 30 , 8),
+                        padding: const EdgeInsets.fromLTRB(30, 30, 30, 8),
                         child: Column(
                           children: [
                             Form(
                               key: formKey,
                               child: Column(
                                 children: [
-
-
                                   //email
                                   TextFormField(
                                     controller: emailController,
-                                    validator: (val) =>
-                                        val == "" ? "please write email " : null,
+                                    validator: (val) => val == ""
+                                        ? "please write email "
+                                        : null,
                                     decoration: InputDecoration(
                                       prefixIcon: Icon(
                                         Icons.email,
@@ -73,26 +73,31 @@ class _LoginScreenState extends State<LoginScreen> {
                                       ),
                                       hintText: "enter your email . . .!",
                                       border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(30),
+                                          borderRadius:
+                                              BorderRadius.circular(30),
                                           borderSide: const BorderSide(
                                             color: Colors.white60,
                                           )),
                                       enabledBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(30),
+                                          borderRadius:
+                                              BorderRadius.circular(30),
                                           borderSide: const BorderSide(
                                             color: Colors.white60,
                                           )),
                                       focusedBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(30),
+                                          borderRadius:
+                                              BorderRadius.circular(30),
                                           borderSide: const BorderSide(
                                             color: Colors.white60,
                                           )),
                                       disabledBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(30),
+                                          borderRadius:
+                                              BorderRadius.circular(30),
                                           borderSide: const BorderSide(
                                             color: Colors.white60,
                                           )),
-                                      contentPadding: const EdgeInsets.symmetric(
+                                      contentPadding:
+                                          const EdgeInsets.symmetric(
                                         horizontal: 14,
                                         vertical: 6,
                                       ),
@@ -101,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ),
                                   ),
 
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 18,
                                   ),
 
@@ -121,7 +126,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                         suffix: Obx(
                                           () => GestureDetector(
                                             onTap: () {
-                                              isObscure.value = !isObscure.value;
+                                              isObscure.value =
+                                                  !isObscure.value;
                                             },
                                             child: Icon(
                                               isObscure.value
@@ -133,26 +139,31 @@ class _LoginScreenState extends State<LoginScreen> {
                                         ),
                                         hintText: "password...",
                                         border: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(30),
+                                            borderRadius:
+                                                BorderRadius.circular(30),
                                             borderSide: const BorderSide(
                                               color: Colors.white60,
                                             )),
                                         enabledBorder: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(30),
+                                            borderRadius:
+                                                BorderRadius.circular(30),
                                             borderSide: const BorderSide(
                                               color: Colors.white60,
                                             )),
                                         focusedBorder: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(30),
+                                            borderRadius:
+                                                BorderRadius.circular(30),
                                             borderSide: const BorderSide(
                                               color: Colors.white60,
                                             )),
                                         disabledBorder: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(30),
+                                            borderRadius:
+                                                BorderRadius.circular(30),
                                             borderSide: const BorderSide(
                                               color: Colors.white60,
                                             )),
-                                        contentPadding: const EdgeInsets.symmetric(
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
                                           horizontal: 14,
                                           vertical: 6,
                                         ),
@@ -189,6 +200,20 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                 ],
                               ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                               const Text(
+                                  "Don't have an account?",
+                                ),
+                                TextButton(
+                                  onPressed: () {},
+                                  child: const Text(
+                                    "Register Here",
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
