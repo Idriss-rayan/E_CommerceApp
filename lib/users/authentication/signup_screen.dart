@@ -64,6 +64,46 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             child: Column(
                               children: [
 
+                                //name
+                                TextFormField(
+                                  controller: nameController,
+                                  validator: (val) =>
+                                  val == "" ? "please write name " : null,
+                                  decoration: InputDecoration(
+                                    prefixIcon: Icon(
+                                      Icons.person,
+                                      color: Colors.black,
+                                    ),
+                                    hintText: "name...!",
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(30),
+                                        borderSide: const BorderSide(
+                                          color: Colors.white60,
+                                        )),
+                                    enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(30),
+                                        borderSide: const BorderSide(
+                                          color: Colors.white60,
+                                        )),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(30),
+                                        borderSide: const BorderSide(
+                                          color: Colors.white60,
+                                        ),),
+                                    disabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(30),
+                                        borderSide: const BorderSide(
+                                          color: Colors.white60,
+                                        )),
+                                    contentPadding: const EdgeInsets.symmetric(
+                                      horizontal: 14,
+                                      vertical: 6,
+                                    ),
+                                    fillColor: Colors.white,
+                                    filled: true,
+                                  ),
+                                ),
+
                                 //email
                                 TextFormField(
                                   controller: emailController,
