@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:untitled/users/authentication/signup_screen.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   var formKey = GlobalKey<FormState>();
+  var nameController = TextEditingController();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   var isObscure = true.obs;
@@ -28,16 +28,16 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               children: [
 
-                //login screen header
+                //signUp screen header
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
                   height: 285,
                   child: Image.asset(
-                    "images/login.jpg",
+                    "images/register.jpg",
                   ),
                 ),
 
-                //login screen sign-in form
+                //signup screen sign-in form
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Container(
@@ -67,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 TextFormField(
                                   controller: emailController,
                                   validator: (val) =>
-                                      val == "" ? "please write email " : null,
+                                  val == "" ? "please write email " : null,
                                   decoration: InputDecoration(
                                     prefixIcon: Icon(
                                       Icons.email,
@@ -109,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                                 //password
                                 Obx(
-                                  () => TextFormField(
+                                      () => TextFormField(
                                     controller: passwordController,
                                     obscureText: isObscure.value,
                                     validator: (val) => val == ""
@@ -121,7 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         color: Colors.black,
                                       ),
                                       suffix: Obx(
-                                        () => GestureDetector(
+                                            () => GestureDetector(
                                           onTap: () {
                                             isObscure.value = !isObscure.value;
                                           },
@@ -136,30 +136,30 @@ class _LoginScreenState extends State<LoginScreen> {
                                       hintText: "password...",
                                       border: OutlineInputBorder(
                                           borderRadius:
-                                              BorderRadius.circular(30),
+                                          BorderRadius.circular(30),
                                           borderSide: const BorderSide(
                                             color: Colors.white60,
                                           )),
                                       enabledBorder: OutlineInputBorder(
                                           borderRadius:
-                                              BorderRadius.circular(30),
+                                          BorderRadius.circular(30),
                                           borderSide: const BorderSide(
                                             color: Colors.white60,
                                           )),
                                       focusedBorder: OutlineInputBorder(
                                           borderRadius:
-                                              BorderRadius.circular(30),
+                                          BorderRadius.circular(30),
                                           borderSide: const BorderSide(
                                             color: Colors.white60,
                                           )),
                                       disabledBorder: OutlineInputBorder(
                                           borderRadius:
-                                              BorderRadius.circular(30),
+                                          BorderRadius.circular(30),
                                           borderSide: const BorderSide(
                                             color: Colors.white60,
                                           )),
                                       contentPadding:
-                                          const EdgeInsets.symmetric(
+                                      const EdgeInsets.symmetric(
                                         horizontal: 14,
                                         vertical: 6,
                                       ),
@@ -206,10 +206,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 "Don't have an account?",
                               ),
                               TextButton(
-                                onPressed: ()
-                                {
-                                  Get.to(SignUpScreen());
-                                },
+                                onPressed: () {},
                                 child: const Text(
                                   "SignUp Here",
                                   style: TextStyle(
