@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled/users/authentication/login_screen.dart';
-import 'package:untitled/users/authentication/signup_screen.dart';
 
 void main()
 {
@@ -21,11 +20,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      initialRoute: '/LoginScreen', // Route initiale
-      getPages: [
-        GetPage(name: '/LoginScreen', page: () => LoginScreen()),
-        GetPage(name: '/SignUpScreen', page: () => SignUpScreen()),
-      ],
+      home: FutureBuilder(
+          builder: (context , dataSnapShot)
+              {
+                return LoginScreen();
+              }, future: null,
+      ),
     );
   }
 }
