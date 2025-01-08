@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:untitled/users/authentication/login_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -58,7 +59,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       padding: const EdgeInsets.fromLTRB(30, 30, 30, 8),
                       child: Column(
                         children: [
-                          //email-password-login
+                          // name-email-password || signUp button
                           Form(
                             key: formKey,
                             child: Column(
@@ -104,6 +105,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   ),
                                 ),
 
+                                const SizedBox(
+                                  height: 18,
+                                ),
+
                                 //email
                                 TextFormField(
                                   controller: emailController,
@@ -114,7 +119,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       Icons.email,
                                       color: Colors.black,
                                     ),
-                                    hintText: "enter your email . . .!",
+                                    hintText: "email",
                                     border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(30),
                                         borderSide: const BorderSide(
@@ -174,7 +179,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           ),
                                         ),
                                       ),
-                                      hintText: "password...",
+                                      hintText: "password",
                                       border: OutlineInputBorder(
                                           borderRadius:
                                           BorderRadius.circular(30),
@@ -226,7 +231,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         horizontal: 28,
                                       ),
                                       child: Text(
-                                        "Login",
+                                        "SignUp",
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 16,
@@ -239,46 +244,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ),
                           ),
 
-                          //don't have an account button
+                          const SizedBox(height: 16,),
+
+                          //already have an account button
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               const Text(
-                                "Don't have an account?",
+                                "Already have an account?",
                               ),
                               TextButton(
-                                onPressed: () {},
+                                onPressed: ()
+                                {
+                                  Get.to(LoginScreen());
+                                },
                                 child: const Text(
-                                  "SignUp Here",
+                                  "Login Here",
                                   style: TextStyle(
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-
-                          const Text(
-                            "Or",
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 16,
-                            ),
-                          ),
-
-                          //Are you an admin - button
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text(
-                                "Are you an admin?",
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: const Text(
-                                  "Click Here",
-                                  style: TextStyle(
-                                    fontSize: 16,
                                     color: Colors.black,
                                   ),
                                 ),
