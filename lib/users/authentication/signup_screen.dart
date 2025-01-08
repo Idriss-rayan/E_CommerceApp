@@ -63,6 +63,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             key: formKey,
                             child: Column(
                               children: [
+
                                 //email
                                 TextFormField(
                                   controller: emailController,
