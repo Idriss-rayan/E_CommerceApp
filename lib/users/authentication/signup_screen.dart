@@ -7,6 +7,7 @@ import 'package:untitled/users/authentication/login_screen.dart';
 import 'package:http/http.dart' as http;
 
 import '../../api_connection/api_connection.dart';
+import '../model/user.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -35,15 +36,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
           if(res.statusCode == 200)
             {
-              var resBody = jsonDecode(res.body);
+              var resBodyOfValidateEmail = jsonDecode(res.body);
 
-              if(resBody['exist'])
+              if(resBodyOfValidateEmail['emailFound'] == true)
                 {
                   Fluttertoast.showToast(msg: 'someone use this email');
                 }
               else
                 {
                   // register and save new user record to database
+                  registerAndSaveSaveUserRecord();
                 }
             }
         }
@@ -52,6 +54,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
     }
   }
+
+  registerAndSaveSaveUserRecord() async
+  {
+    User userModel = User(
+      1,
+      nameController.text.trim(),
+      emailController.text.trim(),
+      passwordController.text.trim(),
+    );
+
+    try
+    {
+      var res = await http.post(
+        Uri.parse(API.signUp),
+        body: userModel.toJson(),
+      );
+
+      if(res.statusCode == 200)
+        {
+          var resBodyOfSignUp = jsonDecode(res.body);
+          if(resBodyOfSignUp[''])
+        }
+    }
+    catch(e)
+    {
+
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
