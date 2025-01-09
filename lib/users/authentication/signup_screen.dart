@@ -1,6 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:untitled/users/authentication/login_screen.dart';
+import 'package:http/http.dart' as http;
+
+import '../../api_connection/api_connection.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -15,6 +21,37 @@ class _SignUpScreenState extends State<SignUpScreen> {
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   var isObscure = true.obs;
+
+  validateUserEmail() async
+  {
+    try
+        {
+          var res = await http.post(
+            Uri.parse(API.validateEmail),
+            body: {
+              'user_email': emailController.text.trim(),
+            },
+          );
+
+          if(res.statusCode == 200)
+            {
+              var resBody = jsonDecode(res.body);
+
+              if(resBody['exist'])
+                {
+                  Fluttertoast.showToast(msg: 'someone use this email');
+                }
+              else
+                {
+                  // register and save new user record to database
+                }
+            }
+        }
+        catch(e)
+    {
+
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -223,7 +260,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   color: Colors.black,
                                   borderRadius: BorderRadius.circular(30),
                                   child: InkWell(
-                                    onTap: () {},
+                                    onTap: ()
+                                    {
+                                      if(formKey.currentState!.validate())
+                                        {
+                                          //validate the email
+                                          validateUserEmail();
+
+                                        }
+                                    },
                                     borderRadius: BorderRadius.circular(30),
                                     child: const Padding(
                                       padding: EdgeInsets.symmetric(
