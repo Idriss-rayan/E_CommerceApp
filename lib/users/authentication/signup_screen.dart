@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -45,6 +45,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               if(resBodyOfValidateEmail['emailFound'] == true)
                 {
                   //Fluttertoast.showToast(msg: 'someone use this email');
+                  showErrorMessage();
                 }
               else
                 {
@@ -81,6 +82,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
           if(resBodyOfSignUp['success'] == true)
             {
               //Fluttertoast.showToast(msg: "SignUp Successfully.");
+              print("rayan");
+              showSuccessMessage();
             }
           else
             {
@@ -367,4 +370,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
       }),
     );
   }
+}
+
+void showSuccessMessage() {
+  window.alert("SignUp Successfully.");
+}
+
+void showErrorMessage() {
+  window.alert("Email already used, please try another email!");
 }
