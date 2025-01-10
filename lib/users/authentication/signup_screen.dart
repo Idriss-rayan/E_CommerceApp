@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -44,8 +43,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
               if(resBodyOfValidateEmail['emailFound'] == true)
                 {
-                  //Fluttertoast.showToast(msg: 'someone use this email');
-                  showErrorMessage();
+                  Fluttertoast.showToast(msg: 'someone use this email');
+
+                  setState(() {
+                    nameController.clear();
+                    emailController.clear();
+                    passwordController.clear();
+                  });
                 }
               else
                 {
@@ -81,9 +85,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
           var resBodyOfSignUp = jsonDecode(res.body);
           if(resBodyOfSignUp['success'] == true)
             {
-              //Fluttertoast.showToast(msg: "SignUp Successfully.");
+              Fluttertoast.showToast(msg: "enregistrer avec succes...");
               print("rayan");
-              showSuccessMessage();
             }
           else
             {
@@ -370,12 +373,4 @@ class _SignUpScreenState extends State<SignUpScreen> {
       }),
     );
   }
-}
-
-void showSuccessMessage() {
-  window.alert("SignUp Successfully.");
-}
-
-void showErrorMessage() {
-  window.alert("Email already used, please try another email!");
 }
