@@ -9,6 +9,10 @@ import 'package:http/http.dart' as http;
 import '../../api_connection/api_connection.dart';
 import '../model/user.dart';
 
+import 'package:flutter/foundation.dart';
+import 'dart:io' show Platform;
+
+
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
@@ -40,7 +44,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
               if(resBodyOfValidateEmail['emailFound'] == true)
                 {
-                  Fluttertoast.showToast(msg: 'someone use this email');
+                  //Fluttertoast.showToast(msg: 'someone use this email');
                 }
               else
                 {
@@ -49,9 +53,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 }
             }
         }
-        catch(e)
-    {
-
+    catch (e) {
+      print("An error occurred: ${e.toString()}");
+      //Fluttertoast.showToast(msg: "An unexpected error occurred. Please try again.");
     }
   }
 
@@ -74,12 +78,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
       if(res.statusCode == 200)
         {
           var resBodyOfSignUp = jsonDecode(res.body);
-          if(resBodyOfSignUp[''])
+          if(resBodyOfSignUp['success'] == true)
+            {
+              //Fluttertoast.showToast(msg: "SignUp Successfully.");
+            }
+          else
+            {
+              //Fluttertoast.showToast(msg: "Error try again");
+            }
         }
     }
     catch(e)
     {
-
+      print(e.toString());
+      //Fluttertoast.showToast(msg: e.toString());
     }
   }
 
