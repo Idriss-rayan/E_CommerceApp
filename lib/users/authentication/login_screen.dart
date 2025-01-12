@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
       );
 
       if(res.statusCode == 200) //from flutter app the connection with api to server - success
-          {
+      {
         var resBodyOfLogin = jsonDecode(res.body);
         if(resBodyOfLogin['success'] == true)
         {
