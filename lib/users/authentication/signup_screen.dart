@@ -85,8 +85,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
           var resBodyOfSignUp = jsonDecode(res.body);
           if(resBodyOfSignUp['success'] == true)
             {
-              Fluttertoast.showToast(msg: "enregistrer avec succes...");
+              //Fluttertoast.showToast(msg: "enregistrer avec succes...");
               print("rayan");
+
+              setState(() {
+                nameController.clear();
+                emailController.clear();
+                passwordController.clear();
+              });
             }
           else
             {
@@ -325,7 +331,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         horizontal: 28,
                                       ),
                                       child: Text(
-                                        "SignUp",
+                                         "SignUp",
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 16,
