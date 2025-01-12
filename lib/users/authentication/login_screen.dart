@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled/users/authentication/signup_screen.dart';
 import 'package:http/http.dart' as http;
+import 'package:untitled/users/fragments/dashboard_of_fragments.dart';
+import 'package:untitled/users/userPreferences/user_preferences.dart';
 
 import '../../api_connection/api_connection.dart';
 import '../model/user.dart';
@@ -25,29 +27,43 @@ class _LoginScreenState extends State<LoginScreen> {
 
   loginUserNow() async
   {
-    var res = await http.post(
-      Uri.parse(API.login),
-      body: {
-        "user_email": emailController.text.trim(),
-        "user_password": passwordController.text.trim(),
-      },
-    );
-
-    if(res.statusCode == 200)
+    try
     {
-      var resBodyOfLogin = jsonDecode(res.body);
-      if(resBodyOfLogin['success'] == true)
-      {
-        //Fluttertoast.showToast(msg: "login successfully...");
-        print("rayan");
-        User userInfo = User.fromJson(resBodyOfLogin["userData"]);
-      }
-      else
-      {
-        //Fluttertoast.showToast(msg: "Error try again");
+      var res = await http.post(
+        Uri.parse(API.login),
+        body: {
+          "user_email": emailController.text.trim(),
+          "user_password": passwordController.text.trim(),
+        },
+      );
+
+      if(res.statusCode == 200) //from flutter app the connection with api to server - success
+          {
+        var resBodyOfLogin = jsonDecode(res.body);
+        if(resBodyOfLogin['success'] == true)
+        {
+          //Fluttertoast.showToast(msg: "login successfully...");
+          print("rayan");
+          User userInfo = User.fromJson(resBodyOfLogin["userData"]);
+
+          //save user info to local storage using shares preferences
+          await RememberUserPrefs.saveRememberUser(userInfo);
+
+          //Get.to(DashboardOfFragments());
+          Future.delayed(Duration(milliseconds: 2000), () {
+            Get.to(DashboardOfFragments());
+          });
+        }
+        else
+        {
+          //Fluttertoast.showToast(msg: "Error try again");
+        }
       }
     }
-
+    catch(errorMsg)
+    {
+      print("Error :: " + errorMsg.toString());
+    }
   }
   @override
   Widget build(BuildContext context) {
@@ -213,7 +229,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                   child: InkWell(
                                     onTap: ()
                                     {
-                                      loginUserNow();
+                                      if(formKey.currentState!.validate())
+                                        {
+                                          loginUserNow();
+                                        }
                                     },
                                     borderRadius: BorderRadius.circular(30),
                                     child: const Padding(
