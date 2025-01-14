@@ -44,6 +44,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               if(resBodyOfValidateEmail['emailFound'] == true)
                 {
                   Fluttertoast.showToast(msg: 'someone use this email');
+                  print("une autre person utilise deja");
 
                   setState(() {
                     nameController.clear();
