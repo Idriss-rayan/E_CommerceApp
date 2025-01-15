@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
         var resBodyOfLogin = jsonDecode(res.body);
         if(resBodyOfLogin['success'] == true)
         {
-          print("enregister avec success"); //Fluttertoast.showToast(msg: "login successfully...");
+          print("rayan"); //Fluttertoast.showToast(msg: "login successfully...");
 
           User userInfo = User.fromJson(resBodyOfLogin["userData"]);
 
