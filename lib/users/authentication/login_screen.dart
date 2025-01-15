@@ -42,15 +42,16 @@ class _LoginScreenState extends State<LoginScreen> {
         var resBodyOfLogin = jsonDecode(res.body);
         if(resBodyOfLogin['success'] == true)
         {
-          //Fluttertoast.showToast(msg: "login successfully...");
-          print("rayan");
+          print("enregister avec success"); //Fluttertoast.showToast(msg: "login successfully...");
+
           User userInfo = User.fromJson(resBodyOfLogin["userData"]);
 
           //save user info to local storage using shares preferences
           await RememberUserPrefs.saveRememberUser(userInfo);
 
           //Get.to(DashboardOfFragments());
-          Future.delayed(Duration(milliseconds: 2000), () {
+          Future.delayed(Duration(milliseconds: 100), ()
+          {
             Get.to(DashboardOfFragments());
           });
         }
