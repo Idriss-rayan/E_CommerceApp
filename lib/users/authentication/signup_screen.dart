@@ -86,7 +86,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           var resBodyOfSignUp = jsonDecode(res.body);
           if(resBodyOfSignUp['success'] == true)
             {
-              //Fluttertoast.showToast(msg: "enregistrer avec succes...");
+              //Fluttertoast.showToast(msg: "SignUp successfully");
               print("rayan");
 
               setState(() {
@@ -97,7 +97,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             }
           else
             {
-              //Fluttertoast.showToast(msg: "Error try again");
+              //Fluttertoast.showToast(msg: "Error Occurred try again");
             }
         }
     }
