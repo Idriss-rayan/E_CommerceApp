@@ -39,21 +39,19 @@ class _LoginScreenState extends State<LoginScreen> {
 
       if(res.statusCode == 200) //from flutter app the connection with api to server - success
       {
+        print("Response body: ${res.body}");
         var resBodyOfLogin = jsonDecode(res.body);
         if(resBodyOfLogin['success'] == true)
         {
-          print("new successful add!"); //Fluttertoast.showToast(msg: "login successfully...");
+          print("Login successful"); //Fluttertoast.showToast(msg: "login successfully...");
 
           User userInfo = User.fromJson(resBodyOfLogin["userData"]);
 
           //save user info to local storage using shares preferences
           await RememberUserPrefs.saveRememberUser(userInfo);
 
-          //Get.to(DashboardOfFragments());
-          Future.delayed(Duration(milliseconds: 100), ()
-          {
-            Get.to(DashboardOfFragments());
-          });
+          Get.to(DashboardOfFragments());
+
         }
         else
         {
