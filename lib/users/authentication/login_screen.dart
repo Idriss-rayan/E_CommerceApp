@@ -43,7 +43,8 @@ class _LoginScreenState extends State<LoginScreen> {
         var resBodyOfLogin = jsonDecode(res.body);
         if(resBodyOfLogin['success'] == true)
         {
-          print("Login successful"); //Fluttertoast.showToast(msg: "login successfully...");
+          print("Login successful"); // je me pourrais pas donc le faire
+          //Fluttertoast.showToast(msg: "login successfully...");
 
           User userInfo = User.fromJson(resBodyOfLogin["userData"]);
 
