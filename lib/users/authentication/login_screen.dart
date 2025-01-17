@@ -51,7 +51,11 @@ class _LoginScreenState extends State<LoginScreen> {
           //save user info to local storage using shares preferences
           await RememberUserPrefs.saveRememberUser(userInfo);
 
-          Get.to(DashboardOfFragments());
+          Future.delayed(Duration(milliseconds: 2000), ()
+          {
+            Get.to(DashboardOfFragments());
+          });
+
 
         }
         else
