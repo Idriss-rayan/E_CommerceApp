@@ -11,6 +11,6 @@ class CurrentUser extends GetxController
   getUserInfo() async
   {
     User? getUserInfoFromLocalStorage = await RememberUserPrefs.readUserInfo() ;
-    _currentUser.value = getUserInfoFromLocalStorage
+    //_currentUser.value = getUserInfoFromLocalStorage
   }
 }
